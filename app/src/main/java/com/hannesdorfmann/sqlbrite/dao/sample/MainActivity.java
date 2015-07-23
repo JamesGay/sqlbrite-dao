@@ -5,13 +5,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.EditText;
 import android.widget.Toast;
-import butterknife.InjectView;
-import butterknife.OnClick;
+
 import com.hannesdorfmann.mosby.dagger1.Dagger1MosbyActivity;
 import com.hannesdorfmann.sqlbrite.dao.sample.model.CustomerDao;
 import com.hannesdorfmann.sqlbrite.dao.sample.model.customer.Customer;
+
+import java.util.Date;
 import java.util.List;
+
 import javax.inject.Inject;
+
+import butterknife.InjectView;
+import butterknife.OnClick;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.functions.Action1;
@@ -79,7 +84,7 @@ public class MainActivity extends Dagger1MosbyActivity {
     };
 
     customerDao.insert(Integer.parseInt(idEdit.getText().toString()),
-        firstnameEdit.getText().toString(), lastnameEdit.getText().toString())
+        firstnameEdit.getText().toString(), lastnameEdit.getText().toString(), new Date())
         .subscribe(insertSubscription);
   }
 
